@@ -23,7 +23,11 @@
     "prop-types": "^15.6.2",
     "react": "^16.6.3",
     "react-dom": "^16.6.3",
-    "react-helmet": "^5.2.0"
+    "react-helmet": "^5.2.0",
+    "react-redux": "5.0.5",
+    "redux": "3.6.0",
+    "redux-thunk": "^2.3.0",
+    "whatwg-fetch": "^3.0.0"
   },
   "keywords": [
     "gatsby"
@@ -36,7 +40,6 @@
     "format": "prettier --write \"src/**/*.js\"",
     "test": "echo \"Write tests! -> https://gatsby.app/unit-testing\"",
     "deploy": "gatsby build --prefix-paths && gh-pages -d public"
-
   },
   "devDependencies": {
     "gh-pages": "^2.0.1",
