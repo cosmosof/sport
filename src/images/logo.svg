@@ -1,7 +1,9 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="120" height="48" viewBox="0 0 120 48">
-  <g id="Artboard" fill="none" fill-rule="evenodd" font-family="HaloHandletter" font-size="36">
-    <text id="AntSport" fill="#5D5A5A">
-      <tspan x="5.08" y="30">AntSport</tspan>
-    </text>
+<svg xmlns="http://www.w3.org/2000/svg" width="119" height="35" viewBox="0 0 119 35">
+  <g id="Page-1" fill="none" fill-rule="evenodd" font-family="PTSans-NarrowBold, PT Sans Narrow" font-size="37" font-style="condensed" font-weight="bold">
+    <g id="Artboard" transform="translate(0 -11)">
+      <text id="AntSport">
+        <tspan x="1.151" y="38" fill="#DB4D4D">Ant</tspan> <tspan x="47.069" y="38" fill="#DAE3EE">Sport</tspan>
+      </text>
+    </g>
   </g>
 </svg>

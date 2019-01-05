@@ -4,19 +4,19 @@ module.exports = {
     description: `Kick off your next, great Gatsby project with this default starter. This barebones starter ships with the main Gatsby configuration files you might need.`,
     author: `@gatsbyjs`,
   },
+  pathPrefix: "/sport_app",
   plugins: [
     {
       resolve: 'gatsby-plugin-less',
       options: {
         javascriptEnabled: true,
         modifyVars: {
-          '@body-background' : '#E4DCDC',
-          '@layout-body-background': `#E4DCDC`,
-          '@layout-header-background': '#E4DCDC',
-          '@layout-body-background': '#E4DCDC',
-          '@layout-footer-background': '#E4DCDC',
-          '@item-active-bg': '#E4DCDC',
-          '@menu-highlight-color': '#5D5A5A',
+          '@body-background' : '#013F8E',
+          '@layout-body-background': `#013F8E`,
+          '@layout-header-background': '#013F8E',
+          '@layout-body-background': '#013F8E',
+          '@layout-footer-background': '#013F8E',
+          '@item-active-bg': '#DB4D4D',
           '@slider-track-background-color': '#948D8D',
           '@slider-track-background-color-hover': '#5D5A5A',
           '@slider-handle-color': '#948D8D',
@@ -27,7 +27,11 @@ module.exports = {
           '@slider-dot-border-color': '#948D8D',
           '@slider-dot-border-color-active': '#5D5A5A',
           '@input-hover-border-color': '#B8B2B2',
-          '@outline-color': '#B8B2B2'
+          '@outline-color': '#B8B2B2',
+          '@menu-dark-item-active-bg': '#03326E',
+          '@menu-dark-highlight-color': '#DB4D4D',
+          '@menu-dark-submenu-bg': '#DB4D4D'
+
 
         },
       },
