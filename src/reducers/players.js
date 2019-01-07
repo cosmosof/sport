@@ -68,6 +68,7 @@ export const filteredPlayers = createSelector(
         })
         break
       default:
+        return players
         break
     }
   }

@@ -73,20 +73,10 @@ class PlayersPage extends Component {
     this.props.searchTerm(e.target.value)
   }
   render = () => {
-    const { isLoading, sortedPlayers, filteredByName, players } = this.props
+    const { isLoading, filteredByName, players } = this.props
     const { filterOn } = this.state
+    const data = filterOn ? players : filteredByName || players
 
-    let data = []
-    switch (filterOn) {
-      case true:
-        data = sortedPlayers
-        break
-      case false:
-        data = filteredByName || players
-        break
-      default:
-        break
-    }
     return (
       <ThemeLayout>
         <SEO title="NFL Players Search" />
@@ -155,10 +145,9 @@ class PlayersPage extends Component {
 
 const mapStateToProps = state => {
   return {
-    players: state.players,
     hasErrored: state.playersHasErrored,
     isLoading: state.playersIsLoading,
-    sortedPlayers: filteredPlayers(state),
+    players: filteredPlayers(state),
     filteredByName: filteredByName(state),
   }
 }
@@ -179,6 +168,7 @@ export default connect(
 PlayersPage.propTypes = {
   children: PropTypes.node.isRequired,
   players: PropTypes.array.isRequired,
+  filteredByName: PropTypes.array,
   hasErrored: PropTypes.string.isRequired,
-  isLoading: PropTypes.bool.isRequired
+  isLoading: PropTypes.bool.isRequired,
 }
