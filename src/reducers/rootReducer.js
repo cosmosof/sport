@@ -1,8 +1,16 @@
-import { combineReducers } from 'redux';
-import simpleReducer from './SimpleReducer';
-import { players, playersFetchHasErrored, playersIsLoading } from './players';
+import { combineReducers } from 'redux'
+import {
+  players,
+  playersFetchHasErrored,
+  playersIsLoading,
+  searchTerm,
+  filterTerm,
+} from './players'
 
 export default combineReducers({
- simpleReducer, players, playersFetchHasErrored, playersIsLoading
-});
-
+  players,
+  playersFetchHasErrored,
+  playersIsLoading,
+  searchTerm,
+  filterTerm,
+})

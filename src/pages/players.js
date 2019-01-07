@@ -1,16 +1,17 @@
 import React, { Component } from 'react'
-import { Link } from 'gatsby'
-import { Button, Layout } from 'antd'
+import PropTypes from 'prop-types'
+import { Layout, List, Avatar, Input, Dropdown, Menu, Icon } from 'antd'
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
 import { connect } from 'react-redux'
-import 'whatwg-fetch';
 import ThemeLayout from '../components/layout'
 import SEO from '../components/seo'
-import { playersFetchData } from '../actions/players';
+import { playersFetchData, searchTerm, filterTerm } from '../actions/players'
+import { filteredPlayers, filteredByName } from '../reducers/players'
 
 const { Content } = Layout
+const Search = Input.Search
 
 const StyledContent = styled(Content)`
   padding: 0 50px;
@@ -21,66 +22,163 @@ const StyledContent = styled(Content)`
   flex-direction: column;
   align-items: center;
   height: 100%;
+  overflow-y: scroll;
+`
+const playerDetailWrapper = css`
+  display: flex;
+  flex-direction: column;
+`
+const playerPositionStyle = css`
+  color: #db4d4d;
+`
+const listStyle = css`
+  background: white;
+  min-width: 380px;
+  min-height: 480px;
+`
+const searchStyle = css`
+  max-width: 420px;
+  @media (max-width: 576px) {
+    max-width: 380px;
+  }
 `
 
 class PlayersPage extends Component {
   constructor(props) {
     super(props)
     this.state = {
-      items: [],
-      isLoading: false,
-      hasErrored: false
+      filterOn: false,
     }
   }
   componentDidMount() {
-    //this.props.fetchData('http://5826ed963900d612000138bd.mockapi.io/items');
+    this.props.fetchData(
+      'https://api.fantasy.nfl.com/v1/players/stats?statType=seasonStats&season=2018&format=json'
+    )
   }
- 
+  handleFilter = ({ key }) => {
+    this.setState({ filterOn: true })
+    switch (key) {
+      case '0':
+        this.props.filterTerm('position')
+        break
+      case '1':
+        this.props.filterTerm('teamAbbr')
+        break
+      default:
+        break
+    }
+  }
+  handleSearchInput = e => {
+    this.setState({ filterOn: false })
+    this.props.searchTerm(e.target.value)
+  }
   render = () => {
-    const { count, increment, simpleAction, fetchData } = this.props
-    const { isLoading, items, hasErrored } = this.state
+    const { isLoading, sortedPlayers, filteredByName, players } = this.props
+    const { filterOn } = this.state
 
+    let data = []
+    switch (filterOn) {
+      case true:
+        data = sortedPlayers
+        break
+      case false:
+        data = filteredByName || players
+        break
+      default:
+        break
+    }
     return (
       <ThemeLayout>
-        <SEO title="Players Page" />
+        <SEO title="NFL Players Search" />
         <StyledContent>
-          <h1>this is a players page</h1>
-          <p>Welcome to players page</p>
-          { <ul>
-                {this.props.players&&this.props.players.map((player) => (
-                    <li key={player.id}>
-                        {player.label}
-                    </li>
-                ))}
-            </ul>}
-            <p>Count: {count}</p>
-            <button onClick={increment} style={{ backgroundColor: 'green' }}>
-              Increment
-            </button>
-            <button onClick={() => this.props.fetchData('http://5826ed963900d612000138bd.mockapi.io/items')} style={{ backgroundColor: 'blue' }}>
-              fetch
-            </button>
-          <Link to="/">Go back to the homepage</Link>
+          {this.props.players && (
+            <List
+              loading={isLoading}
+              header={
+                <React.Fragment>
+                  <Dropdown
+                    overlay={
+                      <Menu onClick={this.handleFilter}>
+                        <Menu.Item key="0">Position</Menu.Item>
+                        <Menu.Item key="1">Team</Menu.Item>
+                      </Menu>
+                    }
+                    trigger={['click']}
+                  >
+                    <a className="ant-dropdown-link" href="#">
+                      Sort Players <Icon type="down" />
+                    </a>
+                  </Dropdown>
+                  <div style={{ marginBottom: `20px` }} />
+
+                  <Search
+                    placeholder="search players"
+                    onSearch={value => console.log(value)}
+                    onChange={this.handleSearchInput}
+                    css={searchStyle}
+                    size="large"
+                  />
+                </React.Fragment>
+              }
+              css={listStyle}
+              size="large"
+              pagination={{
+                onChange: page => {
+                  console.log(page)
+                },
+                pageSize: 5,
+              }}
+              bordered
+              itemLayout="horizontal"
+              dataSource={data}
+              renderItem={item => (
+                <List.Item>
+                  <List.Item.Meta
+                    avatar={
+                      <Avatar src="https://zos.alipayobjects.com/rmsportal/ODTLcjxAfvqbxHnVXCYX.png" />
+                    }
+                    title={item.name}
+                  />
+                  <div css={playerDetailWrapper}>
+                    <h5>{item.teamAbbr}</h5>
+                    <h5 css={playerPositionStyle}>{item.position}</h5>
+                  </div>
+                </List.Item>
+              )}
+            />
+          )}
         </StyledContent>
       </ThemeLayout>
     )
   }
 }
 
-const mapStateToProps = (state) => {
+const mapStateToProps = state => {
   return {
-      count: state.simpleReducer.count,
-      players: state.players,
-      hasErrored: state.playersHasErrored,
-      isLoading: state.playersIsLoading
-  };
-};
+    players: state.players,
+    hasErrored: state.playersHasErrored,
+    isLoading: state.playersIsLoading,
+    sortedPlayers: filteredPlayers(state),
+    filteredByName: filteredByName(state),
+  }
+}
 
 const mapDispatchToProps = dispatch => {
-  return { increment: () => dispatch({ type: `INCREMENT` }), fetchData: (url) => dispatch(playersFetchData(url))}
+  return {
+    fetchData: url => dispatch(playersFetchData(url)),
+    searchTerm: val => dispatch(searchTerm(val)),
+    filterTerm: val => dispatch(filterTerm(val)),
+  }
 }
 
 export default connect(
   mapStateToProps,
   mapDispatchToProps
 )(PlayersPage)
+
+PlayersPage.propTypes = {
+  children: PropTypes.node.isRequired,
+  players: PropTypes.array.isRequired,
+  hasErrored: PropTypes.string.isRequired,
+  isLoading: PropTypes.bool.isRequired
+}

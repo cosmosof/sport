@@ -1,6 +1,5 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { Layout, Menu, Icon, Card, Row, Col } from 'antd'
+import { Layout } from 'antd'
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
@@ -18,7 +17,6 @@ const Text = styled.p`
   text-align: center;
   font-size: 24px;
 `
-
 const StyledContent = styled(Content)`
   padding: 0 50px;
   background: #dae3ee;
@@ -28,17 +26,16 @@ const StyledContent = styled(Content)`
   flex-direction: column;
   align-items: center;
   height: 100%;
+  overflow-y: scroll;
 `
 
 const IndexPage = () => (
   <ThemeLayout>
-    <SEO title="everting about NFL" keywords={[`NFL`, `player`, `football`]} />
+    <SEO title="everting about sport" keywords={[`NFL`, `player`, `football`]} />
     <StyledContent>
-      <Title>
-        Hi, I am AntSport. I have everthing about NFL you are looking for...
-      </Title>
-
-      <Text>You will find a lot more by going through menu tabs...</Text>
+      <Title>Hi, This is AntSport.</Title>
+      <Title>We have the best sport contents on the planet</Title>
+      <Text>All you need to do click on my page tabs</Text>
     </StyledContent>
   </ThemeLayout>
 )

@@ -30,7 +30,8 @@ module.exports = {
           '@outline-color': '#B8B2B2',
           '@menu-dark-item-active-bg': '#03326E',
           '@menu-dark-highlight-color': '#DB4D4D',
-          '@menu-dark-submenu-bg': '#DB4D4D'
+          '@menu-dark-submenu-bg': '#DB4D4D',
+          '@menu-highlight-color': '#DB4D4D'
 
 
         },
@@ -50,8 +51,30 @@ module.exports = {
         path: `${__dirname}/src/images`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/blog`,
+        name: `blog`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/content/assets`,
+        name: `assets`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
     `gatsby-transformer-sharp`,
     `gatsby-plugin-sharp`,
+    `gatsby-transformer-remark`,
     {
       resolve: `gatsby-plugin-manifest`,
       options: {

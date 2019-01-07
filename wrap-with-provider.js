@@ -1,9 +1,9 @@
 import React from "react"
 import { Provider } from "react-redux"
 
-import createStore from "./src/state/createStore"
+import configureStore from "./src/store/configureStore"
 
-const store = createStore()
+const store = configureStore()
 
 // eslint-disable-next-line react/display-name,react/prop-types
 export default ({ element }) => <Provider store={store}>{element}</Provider>

@@ -18,6 +18,7 @@
     "gatsby-plugin-react-helmet": "^3.0.2",
     "gatsby-plugin-sharp": "^2.0.14",
     "gatsby-source-filesystem": "^2.0.8",
+    "gatsby-transformer-remark": "^2.1.19",
     "gatsby-transformer-sharp": "^2.1.8",
     "less": "^3.9.0",
     "prop-types": "^15.6.2",
@@ -27,6 +28,7 @@
     "react-redux": "5.0.5",
     "redux": "3.6.0",
     "redux-thunk": "^2.3.0",
+    "reselect": "^4.0.0",
     "whatwg-fetch": "^3.0.0"
   },
   "keywords": [
