@@ -87,7 +87,7 @@ export default class ThemeLayout extends Component {
                 }
               `}
             />
-            <Layout style={{ display: `flex`, flex: '1', height: `100vh` }}>
+            <Layout style={{ minHeight: '100vh' }}>
               <Header
                 style={{
                   position: 'fixed',

@@ -1,6 +1,7 @@
 import React from 'react'
 import { Link, graphql } from 'gatsby'
 import { Layout, List } from 'antd'
+
 /** @jsx jsx */
 import { jsx, css } from '@emotion/core'
 import styled from '@emotion/styled'
@@ -8,18 +9,16 @@ import ThemeLayout from '../components/layout'
 
 import SEO from '../components/seo'
 
-const { Content } = Layout
+const { Header, Footer, Content } = Layout
 
 const StyledContent = styled(Content)`
-  padding: 0 50px;
+  margin-top: 64px;
   background: #dae3ee;
-  padding: 24px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  overflow-y: scroll;
+  padding: 20px;
 `
 const listStyle = css`
   background: white;

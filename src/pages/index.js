@@ -18,20 +18,20 @@ const Text = styled.p`
   font-size: 24px;
 `
 const StyledContent = styled(Content)`
-  padding: 0 50px;
+  margin-top: 64px;
   background: #dae3ee;
-  padding: 24px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  overflow-y: scroll;
 `
 
 const IndexPage = () => (
   <ThemeLayout>
-    <SEO title="everting about sport" keywords={[`NFL`, `player`, `football`]} />
+    <SEO
+      title="everting about sport"
+      keywords={[`NFL`, `player`, `football`]}
+    />
     <StyledContent>
       <Title>Hi, This is AntSport.</Title>
       <Title>We have the best sport contents on the planet</Title>

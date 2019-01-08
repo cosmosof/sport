@@ -14,15 +14,13 @@ const { Content } = Layout
 const Search = Input.Search
 
 const StyledContent = styled(Content)`
-  padding: 0 50px;
+  margin-top: 64px;
   background: #dae3ee;
-  padding: 24px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  overflow-y: scroll;
+  padding: 20px;
 `
 const playerDetailWrapper = css`
   display: flex;
@@ -33,7 +31,7 @@ const playerPositionStyle = css`
 `
 const listStyle = css`
   background: white;
-  min-width: 380px;
+  min-width: 420px;
   min-height: 480px;
 `
 const searchStyle = css`
