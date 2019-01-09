@@ -12,7 +12,7 @@ import SEO from '../components/seo'
 const { Header, Footer, Content } = Layout
 
 const StyledContent = styled(Content)`
-  margin-top: 64px;
+  margin-top: 48px;
   background: #dae3ee;
   display: flex;
   justify-content: center;

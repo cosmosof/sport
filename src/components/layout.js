@@ -13,19 +13,17 @@ const { Header, Footer } = Layout
 const logoStyle = css`
   width: 50%;
   height: 50%;
-  margin: 16px 24px 16px 20px;
+  margin: 12px 24px 20px 20px;
   float: left;
 `
 
 const StyledMenu = css`
-  line-height: 64px;
   @media (max-width: 576px) {
     display: none;
   }
 `
 const StyledSandwichMenu = css`
   font-size: 24px;
-  margin-top: 20px;
   margin-right: 20px;
   color: #dae3ee;
 `
@@ -96,6 +94,7 @@ export default class ThemeLayout extends Component {
                   padding: '0px',
                   display: 'flex',
                   justifyContent: 'space-between',
+                  height: '48px'
                 }}
               >
                 <Link to="/">
@@ -120,29 +119,26 @@ export default class ThemeLayout extends Component {
                     return (
                       <Menu
                         css={StyledMenu}
-                        theme="dark"
                         mode="horizontal"
                         selectedKeys={[selectedKey]}
+                        style={{ lineHeight: '46px', borderBottom: `1px solid blue` }}
                       >
                         <Menu.Item key="1">
-                          <Link to="/">
+                          <Link to="/"/>
                             <Icon type="home" />
                             <span className="nav-text">Home</span>
-                          </Link>
                         </Menu.Item>
 
                         <Menu.Item key="2">
-                          <Link to="/players/">
+                          <Link to="/players/"/>
                             <Icon type="team" />
                             <span className="nav-text">Players</span>
-                          </Link>
                         </Menu.Item>
 
                         <Menu.Item key="3">
-                          <Link to="/news/">
+                          <Link to="/news/"/>
                             <Icon type="read" />
                             <span className="nav-text">News</span>
-                          </Link>
                         </Menu.Item>
                       </Menu>
                     )
@@ -209,7 +205,7 @@ export default class ThemeLayout extends Component {
                 </StyledOverlayMenu>
               )}
 
-              <Footer style={{ textAlign: 'center', color: '#dae3ee' }}>
+              <Footer style={{ textAlign: 'center', color: '#9DC3F4', height: '48px', paddingTop: `12px` }}>
                 Mustafa Kahraman || Boston ©2019
               </Footer>
             </Layout>

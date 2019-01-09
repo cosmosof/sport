@@ -31,7 +31,9 @@ module.exports = {
           '@menu-dark-item-active-bg': '#03326E',
           '@menu-dark-highlight-color': '#DB4D4D',
           '@menu-dark-submenu-bg': '#DB4D4D',
-          '@menu-highlight-color': '#DB4D4D'
+          '@menu-highlight-color': '#DB4D4D',
+          '@menu-bg': '#013F8E',
+          '@menu-item-color': '#9DC3F4'
 
 
         },
