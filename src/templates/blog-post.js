@@ -10,15 +10,13 @@ import { Layout, Menu, Icon, Card } from 'antd'
 const { Content } = Layout
 
 const StyledContent = styled(Content)`
-  padding: 0 50px;
+  margin-top: 64px;
   background: #dae3ee;
-  padding: 24px;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
-  height: 100%;
-  overflow-y: scroll;
+  padding: 20px;
 `
 class BlogPostTemplate extends React.Component {
   render() {
